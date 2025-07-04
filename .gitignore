@@ -1,0 +1,47 @@
+# Data directories - don't commit large datasets
+GratefulGPT_archive_dataset/
+GratefulGPT_git_data/
+huggingface-cache/
+axolotl-artifacts/
+
+# Sensitive files
+github_pat_*
+
+# Log files
+*.log
+nohup.out
+clone_log.txt
+monitor_log.txt
+
+# Progress files
+progress.json
+scraped_ids.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large dataset files
+*.jsonl
+GratefulGPT_git_dataset.txt
+
+# Keep structure but ignore content of data directories
+!GratefulGPT_archive_dataset/.gitkeep
+!GratefulGPT_git_data/.gitkeep

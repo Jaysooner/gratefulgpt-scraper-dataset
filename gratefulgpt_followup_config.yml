@@ -1,0 +1,60 @@
+base_model: /workspace/data/axolotl-artifacts/gratefulgpt-outputs
+# Resume from the previous trained model
+load_in_4bit: true
+
+datasets:
+  - path: /workspace/data/gratefulgpt_dataset.jsonl
+    type: completion  # Enhanced dataset with Deadcast content
+
+val_set_size: 0.05
+output_dir: /workspace/data/axolotl-artifacts/gratefulgpt-followup-outputs
+
+adapter: qlora
+lora_model_dir:
+
+sequence_len: 2048
+sample_packing: true
+eval_sample_packing: true
+pad_to_sequence_len: true
+
+lora_r: 32
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target_modules:
+  - gate_proj
+  - down_proj
+  - up_proj
+  - q_proj
+  - v_proj
+  - k_proj
+  - o_proj
+
+# Follow-up training settings - more conservative
+gradient_accumulation_steps: 4
+micro_batch_size: 1
+num_epochs: 2  # Fewer epochs for follow-up
+optimizer: adamw_bnb_8bit
+lr_scheduler: cosine
+learning_rate: 0.0001  # Lower learning rate for follow-up
+
+bf16: auto
+tf32: false
+
+gradient_checkpointing: true
+resume_from_checkpoint:
+logging_steps: 10
+flash_attention: true
+
+loss_watchdog_threshold: 5.0
+loss_watchdog_patience: 3
+
+warmup_steps: 50  # Fewer warmup steps
+evals_per_epoch: 2
+saves_per_epoch: 1
+weight_decay: 0.01
+
+special_tokens:
+  pad_token: "<|end_of_text|>"
+
+# Disable vLLM completely
+inference: false

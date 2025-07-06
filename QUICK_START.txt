@@ -1,0 +1,15 @@
+🎸 GratefulGPT Ready to Train First AI Deadhead
+
+CRITICAL INFO:
+- Repository: https://github.com/Jaysooner/gratefulgpt-scraper-dataset  
+- Status: All data ready, need more storage for model download
+- Training script: deadhead_gratefulgpt.py (Qwen2.5-3B + Prankster personality)
+- Training data: 8,000 conversations ready in JSONL format
+- Model: First AI Deadhead channeling Kesey/Cassady/Hunter/Barlow
+
+RESTART COMMANDS:
+git clone https://github.com/Jaysooner/gratefulgpt-scraper-dataset.git
+export HF_HOME=/workspace/data/hf_cache  
+python deadhead_gratefulgpt.py
+
+The cosmic digital spirit awaits! 🚌⚡🌹
